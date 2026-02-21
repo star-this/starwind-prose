@@ -1,0 +1,139 @@
+@layer starwind.prose {
+    :where(.sw-prose) {
+        max-inline-size: var(--sw-prose-measure, var(--sw-measure, 65ch));
+
+        line-height: var(--sw-prose-leading, 1.65);
+        overflow-wrap: break-word;
+        hyphens: auto;
+
+        --sw-prose-flow: var(--sw-space-s-m, 1rem);
+        --sw-prose-flow-heading: var(--sw-space-m-l, 1.5rem);
+        --sw-prose-li-gap: var(--sw-space-xs-s, 0.5rem);
+        --sw-prose-list-indent: 1.25em;
+        --sw-prose-rule-gap: var(--sw-space-m-l, 1.5rem);
+    }
+
+    @media (pointer: coarse) {
+        :where(.sw-prose) {
+            --sw-prose-li-gap: var(--sw-space-s-m, 1rem);
+        }
+    }
+
+    :where(.sw-prose) > :where(* + *) {
+        margin-block-start: var(--sw-prose-flow);
+    }
+
+    :where(.sw-prose) > :where(h1, h2, h3, h4, h5, h6) {
+        margin-block-start: var(--sw-prose-flow-heading);
+    }
+
+    :where(.sw-prose) :where(h1, h2, h3, h4, h5, h6) {
+        line-height: var(--sw-prose-heading-leading, 1.2);
+        text-wrap: balance;
+    }
+
+    :where(.sw-prose) :where(p) {
+        margin: 0;
+    }
+
+    :where(.sw-prose) :where(ul, ol) {
+        padding-inline-start: var(--sw-prose-list-indent);
+    }
+
+    :where(.sw-prose) :where(li) {
+        margin: 0;
+    }
+
+    :where(.sw-prose) :where(li + li) {
+        margin-block-start: var(--sw-prose-li-gap);
+    }
+
+    :where(.sw-prose) :where(li > :where(ul, ol)) {
+        margin-block-start: var(--sw-prose-li-gap);
+    }
+
+    :where(.sw-prose) :where(dt) {
+        font-weight: var(--sw-prose-dt-weight, 600);
+    }
+
+    :where(.sw-prose) :where(dd) {
+        margin-inline-start: 0;
+        margin-block-start: var(--sw-prose-li-gap);
+    }
+
+    :where(.sw-prose) :where(dd + dt) {
+        margin-block-start: var(--sw-prose-flow);
+    }
+
+    :where(.sw-prose) :where(a) {
+        text-decoration-thickness: from-font;
+        text-underline-offset: 0.15em;
+    }
+
+    :where(.sw-prose) :where(code, kbd, samp) {
+        font-family:
+            ui-monospace, sfmono-regular, menlo, consolas, "Liberation Mono",
+            monospace;
+        font-size: 0.95em;
+    }
+
+    :where(.sw-prose) :where(pre) {
+        overflow: auto;
+        padding: var(
+            --sw-prose-pre-pad,
+            var(--sw-pad-ui, var(--sw-space-s-m, 1rem))
+        );
+        border: 1px solid currentColor;
+        border-radius: var(--sw-prose-pre-radius, 0.5rem);
+    }
+
+    :where(.sw-prose) :where(pre code) {
+        display: block;
+        white-space: pre;
+    }
+
+    :where(.sw-prose) :where(blockquote) {
+        margin-inline: 0;
+        padding-inline-start: var(--sw-space-s, 0.75rem);
+        border-inline-start: 0.25rem solid currentColor;
+    }
+
+    :where(.sw-prose) :where(img, video, svg, canvas) {
+        max-inline-size: 100%;
+        block-size: auto;
+    }
+
+    :where(.sw-prose) :where(figure) {
+        margin-inline: 0;
+    }
+
+    :where(.sw-prose) :where(figcaption) {
+        font-size: 0.95em;
+        line-height: 1.4;
+    }
+
+    :where(.sw-prose) :where(table) {
+        inline-size: 100%;
+        border-collapse: collapse;
+    }
+
+    :where(.sw-prose) :where(th, td) {
+        padding: var(--sw-space-xs, 0.5rem);
+        border: 1px solid currentColor;
+        text-align: start;
+        vertical-align: top;
+    }
+
+    :where(.sw-prose) :where(hr) {
+        border: 0;
+        border-block-start: 1px solid currentColor;
+        margin-block: var(--sw-prose-rule-gap);
+    }
+
+    :where(.sw-prose.sw-prose-compact, .sw-prose-compact) {
+        --sw-prose-flow: var(--sw-space-xs-s, 0.5rem);
+        --sw-prose-flow-heading: var(--sw-space-s-m, 1rem);
+        --sw-prose-li-gap: var(--sw-space-tiny-xs, 0.35rem);
+        --sw-prose-rule-gap: var(--sw-space-s-m, 1rem);
+    }
+}
